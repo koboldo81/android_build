@@ -171,6 +171,11 @@ class EdifyGenerator(object):
     self.script.append('package_extract_dir("magisk", "/tmp/magisk");')
     self.script.append('run_program("/sbin/busybox", "unzip", "/tmp/magisk/magisk.zip", "META-INF/com/google/android/*", "-d", "/tmp/magisk");')
     self.script.append('run_program("/sbin/sh", "/tmp/magisk/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/magisk/magisk.zip");')
+
+  def FlashHal3(self):
+    self.script.append('package_extract_dir("camera-hal-op3", "/tmp/camera-hal-op3");')
+    self.script.append('run_program("/sbin/busybox", "unzip", "/tmp/camera-hal-op3/camera-hal-op3.zip", "META-INF/com/google/android/*", "-d", "/tmp/camera-hal-op3");')
+    self.script.append('run_program("/sbin/sh", "/tmp/camera-hal-op3/META-INF/com/google/android/update-binary", "dummy", "1", "/tmp/camera-hal-op3/camera-hal-op3.zip");')
  
   def ShowProgress(self, frac, dur):
     """Update the progress bar, advancing it over 'frac' over the next
